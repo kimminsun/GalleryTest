@@ -3,6 +3,7 @@ package kr.hs.emrim.minsun2767.gallerytest;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,16 @@ public class MainActivity extends AppCompatActivity {
             imgV.setScaleType(ImageView.ScaleType.FIT_CENTER);
             imgV.setPadding(5,5,5,5);
             imgV.setImageResource(posterIDs[position]);
+            final int pos=position;
+            imgV.setOnTouchListener(new View.OnTouchListener() {
+
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    imgMain.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                    imgMain.setImageResource(posterIDs[pos]);
+                    return false;
+                }
+            });
             return imgV;
         }
         public long getItemId(int position){
